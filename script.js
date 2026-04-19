@@ -3,6 +3,16 @@ const large_image_container = document.getElementById("large_image_container");
 const large_image = document.getElementById("large_image");
 let currentImageIndex = -1;
 
+document.getElementById("previous").addEventListener("click", (e) => {
+  e.stopPropagation();
+  previous();
+});
+
+document.getElementById("next").addEventListener("click", (e) => {
+  e.stopPropagation();
+  next();
+});
+
 large_image_container.setAttribute("onclick", "hideLarge()");
 
 let srcs = [];
@@ -48,13 +58,13 @@ document.addEventListener("keydown", (e) => {
       e.preventDefault();
       hideLarge();
       break;
-    case "ArrowLeft":
-      e.preventDefault();
-      previous();
-      break;
     case "ArrowRight":
       e.preventDefault();
       next();
+      break;
+    case "ArrowLeft":
+      e.preventDefault();
+      previous();
       break;
   }
 });

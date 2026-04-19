@@ -54,3 +54,42 @@ img {
 .image:hover {
     cursor: pointer;
 }
+
+.arrow_container {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    z-index: 200;
+    opacity: 0.2;
+}
+
+#previous {
+    left: 0;
+}
+
+#next {
+    right: 0;
+}
+
+.arrow_container:hover {
+    opacity: 0.7;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border: solid 1vw;
+}
+
+#previous_arrow {
+    left: 1vw;
+    border-color: transparent black transparent transparent;
+}
+
+#next_arrow {
+    right: -1vw;
+    border-color: transparent transparent transparent black;
+}
