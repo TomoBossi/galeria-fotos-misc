@@ -37,6 +37,7 @@ for (let image of images) {
       image.src = `${original}&retry=${attempts}`;
     }, delay);
   };
+  image.onerror = retry;
   if (image.complete && image.naturalWidth === 0) retry();
 }
 
