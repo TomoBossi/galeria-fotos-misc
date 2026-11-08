@@ -1,6 +1,7 @@
 const images = document.querySelectorAll("img");
 const large_image_container = document.getElementById("large_image_container");
 const large_image = document.getElementById("large_image");
+const max_retries = 5;
 let currentImageIndex = -1;
 
 document.getElementById("previous").addEventListener("click", (e) => {
@@ -23,6 +24,20 @@ for (let image of images) {
     image.setAttribute("onclick", `showLarge("${hqSrc}")`);
     srcs.push(hqSrc);
   }
+}
+
+for (let image of images) {
+  let original = image.getAttribute("src");
+  let attempts = 0;
+  let retry = () => {
+    if (attempts >= max_retries) return;
+    attempts++;
+    let delay = 1000 * 2 ** (attempts - 1) + Math.random() * 1000;
+    setTimeout(() => {
+      image.src = `${original}&retry=${attempts}`;
+    }, delay);
+  };
+  if (image.complete && image.naturalWidth === 0) retry();
 }
 
 function showLarge(src) {
