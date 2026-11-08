@@ -26,7 +26,7 @@ for (let image of images) {
   }
 }
 
-for (let image of images) {
+for (let image of document.querySelectorAll(".list img")) {
   let original = image.getAttribute("src");
   let attempts = 0;
   let retry = () => {
